@@ -7,9 +7,21 @@ describe('Header component...', () => {
   const defaultProps = { title: 'abc' }
   const render = (props) => shallow(<Header {...props} />);
 
-  it('should have a title with correct text.', () => {
+  it('should render header with correct CSS class.', () => {
         const SUT = render();
 
-        expect(SUT).toHaveClassName('header');
+        expect(SUT.hasClass('header')).toEqual(true);
+  });
+
+  it('should render as a h1 tag.', () => {
+      const SUT = render();
+
+      expect(SUT.name()).toEqual('h1');
+  });
+
+  it('should render with the correct title', () => {
+      const SUT = render({ children: 'abc' });
+      
+      expect(SUT.text()).toEqual('abc');
   });
 });
